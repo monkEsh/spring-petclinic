@@ -18,11 +18,17 @@ jobs:
         distribution: 'adopt'
         server-id: s3.artifacts.release # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
-
+    
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+    
     - name: Publish to GitHub Packages Apache Maven
-      # run: mvn clean deploy --settings settings.xml  -Dmaven.test.skip=true -Diam-user-access-key-id="$AWS_ACCESS_KEY_ID" -Diam-user-secret-key="$AWS_SECRET_ACCESS_KEY"
-      run: echo "$AWS_ACCESS_KEY_ID"
-      env:
-          AWS_DEFAULT_REGION: us-east-1
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      run: mvn clean deploy --settings settings.xml -Dmaven.test.skip=true -Diam-user-access-key-id=$AWS_ACCESS_KEY_ID -Diam-user-secret-key=$AWS_SECRET_ACCESS_KEY
+      env: 
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: us-east-1

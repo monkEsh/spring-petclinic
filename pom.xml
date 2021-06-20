@@ -307,14 +307,14 @@
     </repository>
   </repositories>
   <distributionManagement>
-    <repository>
-      <id>s3.artifacts.release</id>
-      <url>s3://maven-repo-petclinic/petclinic/release</url>
-    </repository>
-    <snapshotRepository>
-      <id>s3.artifacts.snapshot</id>
-      <url>s3://maven-repo-petclinic/petclinic/snapshot</url>
-    </snapshotRepository>
+      <repository>
+          <id>s3.artifacts</id>
+          <url>s3://maven-repo-petclinic/petclinic/release</url>
+      </repository>
+      <snapshotRepository>
+          <id>s3.artifacts</id>
+          <url>s3://maven-repo-petclinic/petclinic/snapshot</url>
+      </snapshotRepository>
   </distributionManagement>
   <pluginRepositories>
     <pluginRepository>
