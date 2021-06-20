@@ -19,6 +19,9 @@ jobs:
         server-id: s3.artifacts.release # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
     
+    - name: Check env variable
+      run: env
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
