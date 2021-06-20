@@ -19,10 +19,7 @@ jobs:
         server-id: s3.artifacts.release # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn clean deploy -s $GITHUB_WORKSPACE/settings.xml -Dmaven.test.skip=true -Diam-user-access-key-id=${{ secrets.AWS_ACCESS_KEY_ID }} -Diam-user-secret-key=${{ secrets.AWS_ACCESS_KEY }}
+      run: mvn clean deploy -s $GITHUB_WORKSPACE/settings.xml -Dmaven.test.skip=true -Diam-user-access-key-id=${{ secrets.AWS_ACCESS_KEY_ID }} -Diam-user-secret-key=${{ secrets.AWS_SECRET_ACCESS_KEY }}
       env:
           AWS_DEFAULT_REGION: us-east-1
