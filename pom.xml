@@ -3,13 +3,12 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>aws-s3-maven</groupId>
+  <groupId>com.aws-s3-maven</groupId>
   <artifactId>aws-maven</artifactId>
-  <packaging>jar</packaging>
   <version>6.0.0</version>
-  <name>Amazon Web Services S3 Maven Wagon Support</name>
-  <description>Standard Maven wagon support for s3:// urls</description>
- 
+  <packaging>jar</packaging>
+  <name>Example S3 maven</name>
+  
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
