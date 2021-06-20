@@ -10,3 +10,11 @@ target/*
 .sts4-cache/
 .vscode
 _site/
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+*.terraform.lock.hcl

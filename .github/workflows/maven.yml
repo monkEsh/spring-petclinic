@@ -17,6 +17,6 @@ jobs:
         with:
           java-version: 1.8
       - name: Build with maven
-        run: mvn -B package --file pom.xml
+        run: mvn --settings infra/maven_settings/settings.xml --file pom.xml package -Diam-user-access-key-id=${{ secrets.AWS_ACCESS_KEY_ID }} -Diam-user-secret-key=${{ secrets.AWS_ACCESS_KEY }}
       - name: list files
         run: ls -lart

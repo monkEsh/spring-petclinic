@@ -3,17 +3,19 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.springframework.samples</groupId>
-  <artifactId>spring-petclinic</artifactId>
-  <version>2.4.5</version>
-
+  <groupId>aws-s3-maven</groupId>
+  <artifactId>aws-maven</artifactId>
+  <packaging>jar</packaging>
+  <version>6.0.0</version>
+  <name>Amazon Web Services S3 Maven Wagon Support</name>
+  <description>Standard Maven wagon support for s3:// urls</description>
+ 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.4.5</version>
   </parent>
-  <name>petclinic</name>
-
+  
   <properties>
 
     <!-- Generic properties -->
@@ -162,7 +164,7 @@
               <encoding>UTF-8</encoding>
               <sourceDirectories>${basedir}</sourceDirectories>
               <includes>**/*</includes>
-              <excludes>**/.git/**/*,**/.idea/**/*,**/target/**/,**/.flattened-pom.xml,**/*.class</excludes>
+              <excludes>**/.git/**/*,**/.idea/**/*,**/target/**/,**/.flattened-pom.xml,**/*.class,**/infra/**</excludes>
             </configuration>
             <goals>
               <goal>check</goal>
@@ -268,6 +270,13 @@
         </dependencies>
       </plugin>
     </plugins>
+    <extensions>
+        <extension>
+            <groupId>com.gkatzioura.maven.cloud</groupId>
+            <artifactId>s3-storage-wagon</artifactId>
+            <version>2.3</version>
+        </extension>
+    </extensions>
   </build>
 
   <licenses>
@@ -294,8 +303,21 @@
         <enabled>false</enabled>
       </snapshots>
     </repository>
+    <repository>
+        <id>aws-s3-maven</id>
+        <url>https://maven-repo-petclinic.s3.us-east-1.amazonaws.com/snapshot</url>
+    </repository>
   </repositories>
-
+  <distributionManagement>
+    <repository>
+      <id>s3.artifacts.release</id>
+      <url>s3://maven-repo-petclinic/release</url>
+    </repository>
+    <snapshotRepository>
+      <id>s3.artifacts.snapshot</id>
+      <url>s3://maven-repo-petclinic/snapshot</url>
+    </snapshotRepository>
+  </distributionManagement>
   <pluginRepositories>
     <pluginRepository>
       <id>spring-snapshots</id>
