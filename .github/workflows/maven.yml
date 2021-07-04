@@ -57,6 +57,8 @@ jobs:
     - name: Retrieve jarfile
       run: |
         echo ::set-env name=JAR_NAME::$(ls target | grep aws-maven | grep -v original)
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
     - name: Deploy the package to the remote server
       uses: garygrossgarten/github-action-scp@release
