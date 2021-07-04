@@ -60,10 +60,14 @@ jobs:
       env:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     
+    - name: Install SSH Key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.GIT_ACCESS_TOKEN }} 
+
     - name: Release
       uses: qcastel/github-actions-maven-release@master
       with:
-        access-token: ${{ secrets.GIT_ACCESS_TOKEN }}
         skip-perform: true
         release-branch-name: "main"
         maven-args: "-Dusername=${{ secrets.GIT_USERNAME }}"
