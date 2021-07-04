@@ -54,20 +54,6 @@ jobs:
     # - name: Publish to GitHub Packages Apache Maven
     #   run: mvn clean deploy -Dmaven.test.skip=true 
     
-    # - name: "Set up SSH agent"
-    #   uses: webfactory/ssh-agent@v0.1.1
-    #   with:
-    #     ssh-private-key: ${{ secrets.GIT_ACCESS_TOKEN }}
-    #   env:
-    #     ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-
-    # - name: "Add GitHub to the SSH known hosts file"
-    #   run: |
-    #     for ip in $(dig @8.8.8.8 github.com +short); do \
-    #       ssh-keyscan github.com,$ip; \
-    #       ssh-keyscan $ip; \
-    #     done 2>/dev/null >> ~/.ssh/known_hosts
-
     - name: Release
       uses: qcastel/github-actions-maven-release@master
       with:
@@ -84,11 +70,11 @@ jobs:
       env:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
-    - name: Deploy the package to the remote server
-      uses: garygrossgarten/github-action-scp@release
-      with:
-        local: target/${{ env.JAR_NAME }}
-        remote: /home/ubuntu/aws-maven.jar
-        host: 54.80.172.80
-        username: ${{ secrets.SSH_USER }}
-        privateKey: ${{ secrets.SSH_KEY }}
+    # - name: Deploy the package to the remote server
+    #   uses: garygrossgarten/github-action-scp@release
+    #   with:
+    #     local: target/${{ env.JAR_NAME }}
+    #     remote: /home/ubuntu/aws-maven.jar
+    #     host: 54.80.172.80
+    #     username: ${{ secrets.SSH_USER }}
+    #     privateKey: ${{ secrets.SSH_KEY }}
