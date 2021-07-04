@@ -54,13 +54,15 @@ jobs:
     - name: Publish to GitHub Packages Apache Maven
       run: mvn clean deploy -Dmaven.test.skip=true 
 
-    - run: ls -lrt target
+    - name: Retrieve jarfile
+      run: |
+        echo ::set-env name=JAR_NAME::$(ls target | grep aws-maven | grep -v original)
 
     - name: Deploy the package to the remote server
       uses: garygrossgarten/github-action-scp@release
       with:
-        local: $GITHUB_WORKSPACE/target/aws-maven-*.jar
-        remote: /home/ubuntu/aws-maven-*.jar
+        local: target/${{ env.JAR_NAME }}
+        remote: /home/ubuntu/aws-maven.jar
         host: 54.80.172.80
         username: ${{ secrets.SSH_USER }}
         privateKey: ${{ secrets.SSH_KEY }}
