@@ -124,6 +124,13 @@
   <build>
     <plugins>
       <plugin>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>3.0.0-M4</version>
+          <configuration>
+              <scmCommentPrefix>[ci skip]</scmCommentPrefix>
+          </configuration>
+      </plugin>
+      <plugin>
         <groupId>io.spring.javaformat</groupId>
         <artifactId>spring-javaformat-maven-plugin</artifactId>
         <version>${spring-format.version}</version>
@@ -316,6 +323,12 @@
           <url>s3://maven-repo-petclinic/petclinic/snapshot</url>
       </snapshotRepository>
   </distributionManagement>
+  <scm>
+    <connection>scm:git:${project.scm.url}</connection>
+    <developerConnection>scm:git:${project.scm.url}</developerConnection>
+    <url>git@github.com:monkEsh/spring-petclinic.git</url>
+    <tag>HEAD</tag>
+  </scm>
   <pluginRepositories>
     <pluginRepository>
       <id>spring-snapshots</id>
