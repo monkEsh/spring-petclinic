@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
     - name: Set up JDK 11
       uses: actions/setup-java@v2
       with:
@@ -19,6 +18,8 @@ jobs:
         server-id: s3.artifacts # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
     
+    - name: Checkout repository
+      uses: actions/checkout@v2
     - name: Codelint check
       uses: github/codeql-action/init@v1
       with:
