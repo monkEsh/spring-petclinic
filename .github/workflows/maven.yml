@@ -65,8 +65,8 @@ jobs:
       with:
         skip-perform: true
         release-branch-name: "main"
-        ssh-private-key: ${{ secrets.GIT_ACCESS_TOKEN }}
         maven-args: "-Dusername=${{ secrets.GIT_USERNAME }}"
+        access-token: ${{ secrets.GIT_ACCESS_TOKEN }}
       env:
         JAVA_HOME: /usr/lib/jvm/java-1.8-openjdk/
 
