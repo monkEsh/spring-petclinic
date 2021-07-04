@@ -53,7 +53,9 @@ jobs:
 
     - name: Publish to GitHub Packages Apache Maven
       run: mvn clean deploy -Dmaven.test.skip=true 
-  
+
+    - run: ls -lrt target
+
     - name: Deploy the package to the remote server
       uses: garygrossgarten/github-action-scp@release
       with:
