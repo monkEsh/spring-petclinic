@@ -46,3 +46,6 @@ jobs:
 
     - name: Publish to GitHub Packages Apache Maven
       run: mvn clean deploy -Dmaven.test.skip=true 
+
+    - name: generate release build
+      run: mvn release:prepare-with-pom
