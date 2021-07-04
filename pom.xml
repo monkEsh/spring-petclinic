@@ -326,7 +326,7 @@
   <scm>
     <connection>scm:git:${project.scm.url}</connection>
     <developerConnection>scm:git:${project.scm.url}</developerConnection>
-    <url>https://github.com/monkEsh/spring-petclinic.git</url>
+    <url>git@github.com:monkEsh/spring-petclinic.git</url>
     <tag>HEAD</tag>
   </scm>
   <pluginRepositories>
