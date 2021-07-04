@@ -59,17 +59,13 @@ jobs:
         echo ::set-env name=JAR_NAME::$(ls target | grep aws-maven | grep -v original)
       env:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-    
-    - name: Install SSH Key
-      uses: shimataro/ssh-key-action@v2
-      with:
-        key: ${{ secrets.GIT_ACCESS_TOKEN }} 
 
     - name: Release
       uses: qcastel/github-actions-maven-release@master
       with:
         skip-perform: true
         release-branch-name: "main"
+        ssh-private-key: ${{ secrets.GIT_ACCESS_TOKEN }}
         maven-args: "-Dusername=${{ secrets.GIT_USERNAME }}"
       env:
         JAVA_HOME: /usr/lib/jvm/java-1.8-openjdk/
