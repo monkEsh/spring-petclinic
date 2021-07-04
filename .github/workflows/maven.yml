@@ -20,12 +20,12 @@ jobs:
     
     - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Codelint check
-      uses: github/codeql-action/init@v1
-      with:
-        languages: java
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v1
+    # - name: Codelint check
+    #   uses: github/codeql-action/init@v1
+    #   with:
+    #     languages: java
+    # - name: Perform CodeQL Analysis
+    #   uses: github/codeql-action/analyze@v1
 
     - name: Setting.xml configuration
       uses: s4u/maven-settings-action@v2.4.0
