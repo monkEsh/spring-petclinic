@@ -65,6 +65,8 @@ jobs:
           ssh-keyscan github.com,$ip; \
           ssh-keyscan $ip; \
         done 2>/dev/null >> ~/.ssh/known_hosts
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
     - name: Release
       uses: qcastel/github-actions-maven-release@master
