@@ -67,6 +67,8 @@ jobs:
         skip-perform: true
         maven-args: "-Dmaven.test.skip=true"
         release-branch-name: "main"
+      env:
+        JAVA_HOME: /usr/lib/jvm/java-1.8-openjdk/
 
     - name: Deploy the package to the remote server
       uses: garygrossgarten/github-action-scp@release
