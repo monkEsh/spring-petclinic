@@ -65,7 +65,7 @@ jobs:
       with:
         access-token: ${{ secrets.GIT_ACCESS_TOKEN }}
         skip-perform: true
-        maven-args: "-Dmaven.test.skip=true"
+        maven-args: "-DskipTests"
         release-branch-name: "main"
       env:
         JAVA_HOME: /usr/lib/jvm/java-1.8-openjdk/
