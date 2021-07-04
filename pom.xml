@@ -318,6 +318,10 @@
           <url>s3://maven-repo-petclinic/petclinic/snapshot</url>
       </snapshotRepository>
   </distributionManagement>
+  <scm>
+    <developerConnection>scm:git:ssh://git@github.com:monkEsh/spring-petclinic.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
   <pluginRepositories>
     <pluginRepository>
       <id>spring-snapshots</id>

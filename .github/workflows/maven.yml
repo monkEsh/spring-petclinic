@@ -18,6 +18,13 @@ jobs:
         distribution: 'adopt'
         server-id: s3.artifacts # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
+    
+    - name: Codelint check
+      uses: github/codeql-action/init@v1
+      with:
+        languages: java
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v1
 
     - name: Setting.xml configuration
       uses: s4u/maven-settings-action@v2.4.0
@@ -48,4 +55,4 @@ jobs:
       run: mvn clean deploy -Dmaven.test.skip=true 
 
     - name: generate release build
-      run: mvn release:prepare-with-pom
+      run: mvn release:prepare
