@@ -16,7 +16,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-        server-id: s3.artifacts.release # Value of the distributionManagement/repository/id field of the pom.xml
+        server-id: s3.artifacts # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Setting.xml configuration

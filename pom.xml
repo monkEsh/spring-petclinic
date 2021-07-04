@@ -3,11 +3,13 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  
   <groupId>com.aws-s3-maven</groupId>
   <artifactId>aws-maven</artifactId>
-  <version>6.0.0</version>
+  <version>6.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>S3_maven</name>
+  
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
