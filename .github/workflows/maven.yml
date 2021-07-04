@@ -18,9 +18,24 @@ jobs:
         distribution: 'adopt'
         server-id: s3.artifacts.release # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
-    
-    - name: Check env variable
-      run: env
+
+    - name: Setting.xml configuration
+      uses: s4u/maven-settings-action@v2.4.0
+      with:
+        servers: |
+          [{
+            "id": "s3.artifacts",
+            "username": "${{ secrets.AWS_ACCESS_KEY_ID }}",
+            "password": "${{ secrets.AWS_SECRET_ACCESS_KEY }}",
+            "configuration":  {
+                "region": "us-east-1"
+              }
+          }]
+    - name: test
+      run: mkdir $HOME/.mvn
+
+    - name: create extentions xml
+      run: echo -e '<extensions xmlns="http://maven.apache.org/EXTENSIONS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n  xsi:schemaLocation="http://maven.apache.org/EXTENSIONS/1.0.0 http://maven.apache.org/xsd/core-extensions-1.0.0.xsd">\n    <extension>\n      <groupId>org.springframework.build</groupId>\n      <artifactId>aws-maven</artifactId>\n      <version>5.0.0.RELEASE</version>\n    </extension>\n</extensions>' > $HOME/.mvn/extensions.xml
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -28,11 +43,6 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
-      env:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
-  
+
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn clean deploy --settings settings.xml -Dmaven.test.skip=true -Diam-user-access-key-id=$AWS_ACCESS_KEY_ID -Diam-user-secret-key=$AWS_SECRET_ACCESS_KEY
-      
+      run: mvn clean deploy -Dmaven.test.skip=true 
