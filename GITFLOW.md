@@ -25,7 +25,6 @@
 </plugin>
 ```
 
-
 # Goals Overview
 
 - `gitflow:release-start` - Starts a release branch and updates version(s) to release version.
