@@ -275,26 +275,27 @@
         </dependencies>
       </plugin>
       <plugin>
-        <groupId>external.atlassian.jgitflow</groupId>
-        <artifactId>jgitflow-maven-plugin</artifactId>
-        <version>1.0-m5.1</version>
-        <configuration>
-            <flowInitContext>
-                <masterBranchName>master</masterBranchName>
-                <developBranchName>development</developBranchName>
-                <featureBranchPrefix>feature-</featureBranchPrefix>
-                <releaseBranchPrefix>release-</releaseBranchPrefix>
-                <hotfixBranchPrefix>hotfix-</hotfixBranchPrefix>
-                <versionTagPrefix>version-</versionTagPrefix>
-            </flowInitContext>
-            <enableSshAgent>true</enableSshAgent>
-            <noDeploy>true</noDeploy>
-            <squash>true</squash>
-            <offline>true</offline>
-            <!-- <defaultOriginUrl>git@github.com:monkEsh/spring-petclinic.git</defaultOriginUrl> -->
-            <!-- <scmCommentPrefix>[RELEASE] </scmCommentPrefix> -->
-        </configuration>
-    </plugin>
+          <groupId>com.amashchenko.maven.plugin</groupId>
+          <artifactId>gitflow-maven-plugin</artifactId>
+          <version>1.16.0</version>
+          <configuration>
+            <installProject>false</installProject>
+            <verbose>false</verbose>
+            <gitFlowConfig>
+                <productionBranch>main</productionBranch>
+                <developmentBranch>develop</developmentBranch>
+                <featureBranchPrefix>feature/</featureBranchPrefix>
+                <releaseBranchPrefix>release/</releaseBranchPrefix>
+                <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
+                <supportBranchPrefix>support/</supportBranchPrefix>
+                <versionTagPrefix></versionTagPrefix>
+                <origin>origin</origin>
+            </gitFlowConfig>
+            <commitMessages>
+                <!-- since 1.2.1, see Customizing commit messages -->
+            </commitMessages>
+          </configuration>
+        </plugin>
     </plugins>
     <extensions>
         <extension>
