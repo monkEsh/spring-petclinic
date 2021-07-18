@@ -274,6 +274,27 @@
           </dependency>
         </dependencies>
       </plugin>
+      <plugin>
+        <groupId>external.atlassian.jgitflow</groupId>
+        <artifactId>jgitflow-maven-plugin</artifactId>
+        <version>1.0-m5.1</version>
+        <configuration>
+            <flowInitContext>
+                <masterBranchName>master</masterBranchName>
+                <developBranchName>development</developBranchName>
+                <featureBranchPrefix>feature-</featureBranchPrefix>
+                <releaseBranchPrefix>release-</releaseBranchPrefix>
+                <hotfixBranchPrefix>hotfix-</hotfixBranchPrefix>
+                <versionTagPrefix>version-</versionTagPrefix>
+            </flowInitContext>
+            <enableSshAgent>true</enableSshAgent>
+            <noDeploy>true</noDeploy>
+            <squash>true</squash>
+            <offline>true</offline>
+            <!-- <defaultOriginUrl>git@github.com:monkEsh/spring-petclinic.git</defaultOriginUrl> -->
+            <!-- <scmCommentPrefix>[RELEASE] </scmCommentPrefix> -->
+        </configuration>
+    </plugin>
     </plugins>
     <extensions>
         <extension>
