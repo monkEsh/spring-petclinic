@@ -1,5 +1,6 @@
 # Gitflow integration for java maven plugin
 1. Install gitflow plugin
+
 ```xml
 <plugin>
     <groupId>com.amashchenko.maven.plugin</groupId>
