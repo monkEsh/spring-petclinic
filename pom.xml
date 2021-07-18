@@ -282,7 +282,7 @@
             <installProject>false</installProject>
             <verbose>false</verbose>
             <gitFlowConfig>
-                <productionBranch>main</productionBranch>
+                <productionBranch>master</productionBranch>
                 <developmentBranch>develop</developmentBranch>
                 <featureBranchPrefix>feature/</featureBranchPrefix>
                 <releaseBranchPrefix>release/</releaseBranchPrefix>
