@@ -4,7 +4,7 @@
   
   <groupId>com.aws-s3-maven</groupId>
   <artifactId>aws-maven</artifactId>
-  <version>6.0.11</version>
+  <version>6.0.12-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>S3_maven</name>
   
