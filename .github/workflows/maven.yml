@@ -51,18 +51,18 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
 
-    # - name: Publish to GitHub Packages Apache Maven
-    #   run: mvn clean deploy -Dmaven.test.skip=true 
+    - name: Publish to GitHub Packages Apache Maven
+      run: mvn clean deploy -Dmaven.test.skip=true 
     
-    - name: Release
-      uses: qcastel/github-actions-maven-release@master
-      with:
-        skip-perform: true
-        release-branch-name: "main"
-        maven-args: "-Dusername=${{ secrets.GIT_USERNAME }}"
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      env:
-        JAVA_HOME: /usr/lib/jvm/java-1.8-openjdk/
+    # - name: Release
+    #   uses: qcastel/github-actions-maven-release@master
+    #   with:
+    #     skip-perform: true
+    #     release-branch-name: "main"
+    #     maven-args: "-Dusername=${{ secrets.GIT_USERNAME }}"
+    #     ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    #   env:
+    #     JAVA_HOME: /usr/lib/jvm/java-1.8-openjdk/
 
     - name: Retrieve jarfile
       run: |
