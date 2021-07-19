@@ -11,8 +11,16 @@
     - Objectives:
         - Execute code quality check on project using codeql
 
-3. maven.yml
-    - Name: Petclinic CI-CD pipeline
+3. dev-env-cicd.yml
+    - Name: CI-CD pipeline
+    - Objectives:
+        - Build project
+        - Upload to maven repo
+        - Fetch artifact name
+        - Upload artifact to server
+
+4. prod-env-cicd.yml
+    - Name: CI-CD pipeline
     - Objectives:
         - Build project
         - Upload to maven repo
