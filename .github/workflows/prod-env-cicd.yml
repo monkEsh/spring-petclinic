@@ -1,4 +1,4 @@
-name: Petclinic CI pipeline
+name: Prod Petclinic CI pipeline
 
 on:
   workflow_dispatch:

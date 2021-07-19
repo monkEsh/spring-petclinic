@@ -1,4 +1,4 @@
-name: Petclinic CI pipeline
+name: Dev Petclinic CI pipeline
 
 on:
   push:
