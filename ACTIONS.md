@@ -49,9 +49,9 @@
         - Autobuild
         - Perform CodeQL Analysis
 
-3. On commiting to `master` branch CICD job will be triggered which will build product and push artifact to the server.
+3. On commiting to `develop` branch CICD job will be triggered which will build product and push artifact to develop server.
 
-    - Triggers: Push to master
+    - Triggers: Push to develop
 
     - Steps:
 
@@ -64,6 +64,5 @@
         - Generate and publish build
         - Retrieve jarfile
         - Deploy the package to the remote server
-
 
 ![githubactions.png](githubactions.png)
