@@ -1,4 +1,4 @@
-name: Petclinic build test pipeline
+name: Build test pipeline
 
 on:
   push:
@@ -20,13 +20,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     
-    - name: test
+    - name: Setup maven directory
       run: mkdir $HOME/.mvn
 
     - name: create extentions xml
       run: echo -e '<extensions xmlns="http://maven.apache.org/EXTENSIONS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n  xsi:schemaLocation="http://maven.apache.org/EXTENSIONS/1.0.0 http://maven.apache.org/xsd/core-extensions-1.0.0.xsd">\n    <extension>\n      <groupId>org.springframework.build</groupId>\n      <artifactId>aws-maven</artifactId>\n      <version>5.0.0.RELEASE</version>\n    </extension>\n</extensions>' > $HOME/.mvn/extensions.xml
 
-    - name: mvn compile build
+    - name: Compile build
       run: |
         mvn compile
       env:

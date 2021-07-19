@@ -1,9 +1,8 @@
-name: Petclinic CI pipeline
+name: Prod Petclinic CI pipeline
 
 on:
-  push:
-    branches:
-      - "main"
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,13 +18,7 @@ jobs:
     
     - name: Checkout repository
       uses: actions/checkout@v2
-    # - name: Codelint check
-    #   uses: github/codeql-action/init@v1
-    #   with:
-    #     languages: java
-    # - name: Perform CodeQL Analysis
-    #   uses: github/codeql-action/analyze@v1
-
+  
     - name: Setting.xml configuration
       uses: s4u/maven-settings-action@v2.4.0
       with:
@@ -38,7 +31,7 @@ jobs:
                 "region": "us-east-1"
               }
           }]
-    - name: test
+    - name: Setup maven directory
       run: mkdir $HOME/.mvn
 
     - name: create extentions xml
@@ -51,19 +44,9 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
 
-    # - name: Publish to GitHub Packages Apache Maven
-    #   run: mvn clean deploy -Dmaven.test.skip=true 
+    - name: Generate and publish build 
+      run: mvn clean deploy -Dmaven.test.skip=true 
     
-    - name: Release
-      uses: qcastel/github-actions-maven-release@master
-      with:
-        skip-perform: true
-        release-branch-name: "main"
-        maven-args: "-Dusername=${{ secrets.GIT_USERNAME }}"
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      env:
-        JAVA_HOME: /usr/lib/jvm/java-1.8-openjdk/
-
     - name: Retrieve jarfile
       run: |
         echo ::set-env name=JAR_NAME::$(ls target | grep aws-maven | grep -v original)
