@@ -1,5 +1,5 @@
 # Gitflow strategy
-![git-model@2x.png](https://nvie.com/img/git-model@2x.png)
+![git-model@2x.png](git-model@2x.png)
 
 ## The main branches 
 
